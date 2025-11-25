@@ -72,6 +72,7 @@ public class TabulatedFunction {
                 double y1 = points[i].getY();
                 double y2 = points[i + 1].getY();
                 M = y1 + (y2 - y1) * (x - x_1) / (x_2 - x_1);
+                return M;
             }
 
             if(Math.abs(x - points[i].getX()) < EPSILON_DOUBLE){
@@ -165,8 +166,7 @@ public class TabulatedFunction {
             insertIndex++;
         }
 
-        
-        if (insertIndex < pointsCount && points[insertIndex].getX() == point.getX()) {
+        if (insertIndex < pointsCount && Math.abs(point.getX() - points[insertIndex].getX()) < EPSILON_DOUBLE){
             return; 
         }
 
